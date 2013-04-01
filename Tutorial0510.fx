@@ -100,12 +100,19 @@ PS_INPUT VS( VS_INPUT input )
 //--------------------------------------------------------------------------------------
 float4 PS( PS_INPUT input) : SV_Target
 {
+
+			float4 bumVal = bumpTexture.Sample( samLinear, input.Tex ) * 2. - 1;
+		//float bumpNorm = input.Normal + bumVal.x * input.BiNormal + bumVal.y * input.Tangent;
+		//float bumpNorm = input.Normal + bumVal.x * input.BiNormal + bumVal.y * input.Tangent;
+		//bumpNorm = bumpNorm * 2. - 1.;
+
         float4 LightColor = 0;
         
-        //do NdotL lighting for 2 lights
+        //do NdotL lighting for x lights
         for(int i=0; i<4; i++)
         {
-            LightColor += saturate( dot( (float3)vLightDir[i],input.Normal) * vLightColor[i]);
+            //LightColor += saturate( dot( (float3)vLightDir[i],input.Normal) * vLightColor[i]);
+            LightColor += saturate( dot( (float3)vLightDir[i],(float3)bumVal) * vLightColor[i]);
         }
 
 		if( texSelect == input.TexNum)
@@ -116,8 +123,7 @@ float4 PS( PS_INPUT input) : SV_Target
 
 		int texnum = input.TexNum;
 
-		float4 bumVal = bumpTexture.Sample( samLinear, input.Tex );
-		float bumpNorm = input.Normal + bumVal.x * input.BiNormal + bumVal.y * input.Tangent;
+
 
 
 		//quick hack to make to expand it to large values. change 10 if more than 10 tex on an object
@@ -125,7 +131,7 @@ float4 PS( PS_INPUT input) : SV_Target
 		{
 			if( i == input.TexNum )
 			{
-				return shaderTextures[i].Sample( samLinear, input.Tex )*LightColor*bumpNorm;
+				return shaderTextures[i].Sample( samLinear, input.Tex )*LightColor;//*bumpNorm;
 
 			}
 		}

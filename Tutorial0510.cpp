@@ -533,7 +533,7 @@ HRESULT InitDevice()
 	/*-----------------------------------------------------------------------------------------------------------*/
 	/*-----------------------------------------------------------------------------------------------------------*/
 
-	vLightDirs.push_back( D3DXVECTOR4( -1.0f, 0.0f, 0.0f, 1.0f ) );
+	vLightDirs.push_back( D3DXVECTOR4( -5.0f, 0.0f, 0.0f, 1.0f ) );
 	vLightColor.push_back( D3DXVECTOR4( 1.0, 1.0, 1.0, 1.0 ) );
 
 	vLightDirs.push_back( D3DXVECTOR4( 1.0f, 0.0f, 0.0f, 1.0f ) );
@@ -541,14 +541,14 @@ HRESULT InitDevice()
 
 
 
-		vLightDirs.push_back( D3DXVECTOR4( 0.0f, 1.0f, 0.0f, 1.0f ) );
+		vLightDirs.push_back( D3DXVECTOR4( 0.0f, 5.0f, 0.0f, 1.0f ) );
 	vLightColor.push_back( D3DXVECTOR4( 1.0, 1.0, 1.0, 1.0 ) );
 
 	vLightDirs.push_back( D3DXVECTOR4( 0.0f, -1.0f, 0.0f, 1.0f ) );
 	vLightColor.push_back( D3DXVECTOR4( 1.0, 1.0, 1.0, 1.0 ) );
 
 
-		vLightDirs.push_back( D3DXVECTOR4( 0.0f, 0.0f, 1.0f, 1.0f ) );
+		vLightDirs.push_back( D3DXVECTOR4( 0.0f, 0.0f, 5.0f, 1.0f ) );
 	vLightColor.push_back( D3DXVECTOR4( 1.0, 1.0, 1.0, 1.0 ) );
 
 	vLightDirs.push_back( D3DXVECTOR4( 0.0f, 0.0f, -1.0f, 1.0f ) );
